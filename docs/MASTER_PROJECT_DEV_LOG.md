@@ -85,27 +85,21 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
   - **Dedicated Branch Siswa**: `starter-kit` (Siswa dapat meng-checkout branch ini untuk memulai pembelajaran dengan UI siap pakai tanpa boilerplate kosong).
 
 ### Milestone 2: Sesi 01 - Fondasi GetX (3 Pilar), GetX CLI & Onboarding Starter Kit
-- **Master Outline & AI Prompt Presentation**:
-  - Dibuat di `docs/materi_presentasi/OUTLINE_SLIDE_SESI_01_AI_PROMPT.md` (Dokumen spesifikasi slide per slide lengkap dengan design directives, talking points, visual layout guidance, dan prompt siap copy-paste untuk AI seperti Claude, NotebookLM, Gamma.app, atau ChatGPT).
+- **Master Outline & AI Prompt Presentation Suite**:
+  - `docs/materi_presentasi/OUTLINE_SLIDE_SESI_01_AI_PROMPT.md` (Fondasi 3 Pilar GetX & GetX CLI).
+  - `docs/materi_presentasi/OUTLINE_SLIDE_MVVM_GETX_AI_PROMPT.md` (Arsitektur MVVM & Pemisahan Logika).
+  - `docs/materi_presentasi/OUTLINE_SLIDE_REST_API_DIO_AI_PROMPT.md` (Rest API Networking, Dio, JSON Serialization, Shimmer UI).
+  - `docs/materi_presentasi/OUTLINE_SLIDE_LOCAL_STORAGE_HIVE_AI_PROMPT.md` (Local Storage: SharedPreferences vs Hive CE NoSQL).
+  - `docs/materi_presentasi/OUTLINE_SLIDE_FIREBASE_AUTH_FIRESTORE_AI_PROMPT.md` (Firebase Auth & Cloud Firestore Realtime).
+  - *Seluruh dokumen dilengkapi design directives (Clean Light Theme 16:9), layout spesifik per slide, kode Dart, analogi dunia nyata, speaker notes, kuis siswa, dan prompt siap salin untuk Claude, NotebookLM, Gamma.app, atau ChatGPT.*
 - **Slide Deck Presentasi Lengkap (Tema Terang / Clean Light Theme)**:
   - **PowerPoint**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.pptx` (Format Microsoft PowerPoint 16:9, typography proporsional, card styling, bersih & elegan).
   - **Web Interactive Slide**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.html` (Bisa dibuka di browser apa pun dalam mode fullscreen presentation).
   - **Source Markdown**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.md`.
-  - **Desain & Tipografi**:
-    * Tema Terang Modern (Latar putih `#FFFFFF`, kartu Slate `#F8FAFC`, aksen Indigo `#4F46E5` & Orange `#EA580C`).
-    * Tipografi proporsional berbasis font *Plus Jakarta Sans* & *JetBrains Mono* (ukuran judul 26px, teks 14-15px, kode 12px, tanpa teks raksasa).
-    * Tata letak berbasis komponen kartu (Grid 2, Grid 3, Grid 4) tanpa diagram ASCII kasar.
-  - Meliputi:
-    1. Evaluasi masalah `setState()` & `BuildContext` di Flutter standar.
-    2. Pilar 1: State Management (Reaktif `.obs` vs `Obx`, tabel tipe data Rx).
-    3. Pilar 2: Route Management (`Get.toNamed`, `Get.back`, passing arguments).
-    4. Pilar 3: Dependency Management (`Get.lazyPut`, `Get.find`, Bindings, memory auto-dispose).
-    5. GetX CLI: Command cheat sheet & standarisasi arsitektur modular `lib/app/`.
-    6. Analogi Dunia Nyata: Alur Restoran Modern (View = Meja/Menu, Controller = Koki/Dapur, Binding = Supplier).
-    7. Kuis interaktif 3 pertanyaan pemahaman konsep.
 - **Onboarding Proyek Siswa**:
   - Siswa siap meng-clone dan checkout ke branch `starter-kit`.
 - **Git Checkpoint**: `sesi-01`
+
 
 
 
