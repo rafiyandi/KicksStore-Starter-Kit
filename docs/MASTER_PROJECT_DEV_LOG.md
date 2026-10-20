@@ -146,6 +146,13 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
      - Menginjeksi item baru langsung ke `CartController` via `Get.find<CartController>().addItem(...)`.
   6. `lib/app/modules/cart/views/cart_view.dart`:
      - Menghubungkan seluruh antarmuka keranjang belanja ke data nyata di `CartController` (daftar item, ringkasan harga, stepper qty, dan tombol hapus).
+  7. `lib/app/modules/wishlist/controllers/wishlist_controller.dart`:
+     - Menghubungkan ke `HomeController.favoriteIds` dan `CartController` via Dependency Injection.
+     - Menyediakan getter `wishlistItems` reaktif yang otomatis menyaring produk favorit.
+     - Menyediakan method `removeFromWishlist()` dan `moveToCart()` (pindah langsung ke keranjang belanja).
+  8. `lib/app/modules/wishlist/views/wishlist_view.dart`:
+     - Menghubungkan antarmuka ke `controller.wishlistItems`, menampilkan daftar produk favorit dinamis atau empty state informatif jika kosong.
+- **Catatan Roadmap**: Sinkronisasi saat ini berjalan secara *reaktif in-memory* (antar-controller GetX). Pada **Sesi 08**, Wishlist dan Cart akan di-upgrade ke penyimpanan lokal permanen NoSQL menggunakan **Hive CE**, sehingga data tersimpan offline dan tidak hilang saat aplikasi ditutup/restart.
 - **Status Eksekusi**:  **Selesai (Verified 0 Errors with dart analyze)**
 - **Git Checkpoint**: `sesi-03`
 
