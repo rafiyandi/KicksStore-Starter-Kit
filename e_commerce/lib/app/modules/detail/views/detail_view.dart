@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 import 'package:e_commerce/app/core/theme/app_colors.dart';
 import 'package:e_commerce/app/modules/detail/controllers/detail_controller.dart';
 import 'package:e_commerce/app/routes/app_pages.dart';
 
-/// Halaman Detail Produk KicksStore (Sesi 02: Full Reaktif via DetailController)
+/// Halaman Detail Produk KicksStore (Sesi 03: Arsitektur MVVM via ProductModel)
 class DetailView extends GetView<DetailController> {
   const DetailView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final currencyFormatter = NumberFormat.currency(
-      locale: 'id_ID',
-      symbol: 'Rp ',
-      decimalDigits: 0,
-    );
 
     return Scaffold(
       appBar: AppBar(
@@ -27,7 +21,7 @@ class DetailView extends GetView<DetailController> {
         ),
         title: const Text('Detail Produk'),
         actions: [
-          // Sesi 02: Tombol Wishlist Reaktif
+          // Sesi 03: Tombol Wishlist Reaktif
           Obx(
             () => IconButton(
               tooltip: 'Simpan ke Favorit',
@@ -49,11 +43,10 @@ class DetailView extends GetView<DetailController> {
         ],
       ),
       body: Obx(() {
-        final product = controller.product;
-        final price = product['price'];
-        final formattedPrice = price is num
-            ? currencyFormatter.format(price)
-            : (price?.toString() ?? 'Rp 0');
+        final p = controller.product.value;
+        if (p == null) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
         return SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -77,7 +70,7 @@ class DetailView extends GetView<DetailController> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.network(
-                    product['imageUrl'] as String? ?? '',
+                    p.imageUrl,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) => Center(
                       child: Icon(
@@ -113,7 +106,7 @@ class DetailView extends GetView<DetailController> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      product['category'] as String? ?? 'Sneakers',
+                      p.category,
                       style: const TextStyle(
                         color: AppColors.primary,
                         fontSize: 12,
@@ -130,7 +123,7 @@ class DetailView extends GetView<DetailController> {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        '${product['rating'] ?? 4.9} / 5.0 (${product['reviewCount'] ?? 120}+ ulasan)',
+                        '${p.rating} / 5.0 (${p.reviewCount}+ ulasan)',
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
@@ -145,9 +138,9 @@ class DetailView extends GetView<DetailController> {
               ),
               const SizedBox(height: 12),
 
-              // Nama Produk & Harga Satuan
+              // Nama Produk & Harga Satuan Type-Safe
               Text(
-                product['name'] as String? ?? 'Sneakers Premium',
+                p.name,
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
@@ -159,7 +152,7 @@ class DetailView extends GetView<DetailController> {
               ),
               const SizedBox(height: 8),
               Text(
-                formattedPrice,
+                p.formattedPrice,
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w900,
@@ -168,7 +161,7 @@ class DetailView extends GetView<DetailController> {
               ),
               const SizedBox(height: 20),
 
-              // Pemilih Ukuran Sepatu (Size Selector Reaktif Sesi 02)
+              // Pemilih Ukuran Sepatu (Size Selector Reaktif)
               Text(
                 'Pilih Ukuran (EU)',
                 style: TextStyle(
@@ -232,8 +225,7 @@ class DetailView extends GetView<DetailController> {
               ),
               const SizedBox(height: 8),
               Text(
-                product['description'] as String? ??
-                    'Sneakers berkualitas tinggi dengan bantalan responsif, material premium pilihan, dan kenyamanan optimal untuk aktivitas kasual maupun olahraga.',
+                p.description,
                 style: TextStyle(
                   fontSize: 14,
                   height: 1.6,
@@ -263,7 +255,7 @@ class DetailView extends GetView<DetailController> {
         child: SafeArea(
           child: Row(
             children: [
-              // Sesi 02: Quantity Stepper Counter Reaktif (Obx)
+              // Sesi 03: Quantity Stepper Counter Reaktif
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -296,7 +288,7 @@ class DetailView extends GetView<DetailController> {
               ),
               const SizedBox(width: 14),
 
-              // Sesi 02: Tombol Tambah ke Keranjang CTA
+              // Sesi 03: Tombol Tambah ke Keranjang CTA (Injeksi ke CartController)
               Expanded(
                 child: ElevatedButton.icon(
                   onPressed: controller.addToCart,

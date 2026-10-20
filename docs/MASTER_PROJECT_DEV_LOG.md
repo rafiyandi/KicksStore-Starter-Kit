@@ -124,6 +124,31 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
 - **Status Eksekusi**:  **Selesai (Verified 0 Errors with dart analyze)**
 - **Git Checkpoint**: `sesi-02`
 
+### Milestone 4: Sesi 03 - Arsitektur Bersih MVVM & Dependency Injection (Bindings)
+- **Tujuan Pembelajaran Siswa**:
+  1. Memisahkan 3 lapis arsitektur: **Model** (Entitas data murni type-safe), **View** (Antarmuka murni via `GetView<T>`), dan **ViewModel** (Logika bisnis & reaktivitas via `GetxController`).
+  2. Menerapkan Dependency Injection dengan `Bindings`: menghubungkan controller ke rute navigasi tanpa instansiasi manual di dalam widget UI.
+  3. Memahami komunikasi antar-controller menggunakan `Get.find<T>()` (misalnya: `DetailController` mengirim pesanan ke `CartController`, dan badge keranjang di `HomeController` ter-update otomatis).
+- **Daftar Berkas & Perubahan Logika**:
+  1. `lib/app/data/models/product_model.dart` (BARU):
+     - Kelas Model Dart type-safe dengan constructor bernama, validasi tipe data, helper `formattedPrice`, dan serialisasi `toMap` / `fromMap`.
+  2. `lib/app/data/models/cart_item_model.dart` (BARU):
+     - Kelas Model untuk menampung item keranjang belanja (produk, kuantitas, ukuran yang dipilih).
+  3. `lib/app/modules/cart/controllers/cart_controller.dart`:
+     - Menjadi sentral manajemen keranjang belanja aplikasi (`RxList<CartItemModel> items = <CartItemModel>[].obs`).
+     - Menyediakan getter kalkulasi finansial reaktif: `subtotal`, `tax (11%)`, dan `totalPrice`.
+     - Method manajemen item: `addItem()`, `removeItem()`, `increaseQuantity()`, `decreaseQuantity()`, dan `clearCart()`.
+  4. `lib/app/modules/home/controllers/home_controller.dart`:
+     - Refactor katalog dari `Map<String, dynamic>` mentah ke `List<ProductModel>`.
+     - Menggunakan `Get.find<CartController>()` untuk membaca jumlah item keranjang belanja secara terpusat.
+  5. `lib/app/modules/detail/controllers/detail_controller.dart`:
+     - Refactor objek `product` ke tipe `Rx<ProductModel?>`.
+     - Menginjeksi item baru langsung ke `CartController` via `Get.find<CartController>().addItem(...)`.
+  6. `lib/app/modules/cart/views/cart_view.dart`:
+     - Menghubungkan seluruh antarmuka keranjang belanja ke data nyata di `CartController` (daftar item, ringkasan harga, stepper qty, dan tombol hapus).
+- **Status Eksekusi**:  **Selesai (Verified 0 Errors with dart analyze)**
+- **Git Checkpoint**: `sesi-03`
+
 ---
 
 ## 5. RENCANA EKSEKUSI SESI 01 s/d SESI 12
@@ -134,9 +159,9 @@ Status dan rencana eksekusi modular:
 |---|---|---|---|
 | **Sesi 01** | Fondasi GetX (3 Pilar) & GetX CLI | Penyusunan slide PPT komprehensif, analogi arsitektur, kuis interaktif, onboarding `starter-kit` |  **Selesai** (`sesi-01`) |
 | **Sesi 02** | Reaktivitas State & Navigasi GetX | Filter kategori reaktif, cart badge AppBar, favorite toggle, navigasi berargumen ke Detail, quantity counter & snackbar |  **Selesai** (`sesi-02`) |
-| **Sesi 03** | Advanced State Management GetX | Refactor logika ke `HomeController` & `DetailController`, pemisahan logic dari view, navigation `Get.toNamed` berargumen | `sesi-03` |
-
+| **Sesi 03** | Arsitektur MVVM & Dependency Injection | Lapisan Model Type-Safe (`ProductModel`, `CartItemModel`), refactor ViewModel, CartController terpusat, komunikasi via `Get.find` |  **Selesai** (`sesi-03`) |
 | **Sesi 04** | Form Handling & Validasi Input | Form validasi `login_view` & `register_view`, validasi email regex & password, `TextEditingController` via GetX | `sesi-04` |
+
 | **Sesi 05** | Networking: Rest API & JSON Serializer | Setup `DioService`, `ProductModel` (fromJson/toJson), fetching katalog produk dummy API, error handling snackbar | `sesi-05` |
 | **Sesi 06** | Dio Interceptor & State UI | Dio interceptor (logging & auth token), Shimmer loading skeleton pada `home_view`, state empty & error retry | `sesi-06` |
 | **Sesi 07** | Local Storage: Shared Preferences | Simpan status session auth (token/isLoggedIn) dan preferensi tema (Light/Dark switch) via SharedPreferences | `sesi-07` |
