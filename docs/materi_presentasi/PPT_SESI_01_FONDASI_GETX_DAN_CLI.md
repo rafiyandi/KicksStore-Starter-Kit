@@ -1,221 +1,457 @@
 ---
 marp: true
-theme: gaia
-_class: lead
+theme: default
+size: 16:9
 paginate: true
-backgroundColor: #0F172A
-color: #F8FAFC
 style: |
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
   section {
-    font-family: 'Inter', sans-serif;
-    padding: 40px;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #334155;
+    background: #FFFFFF;
+    padding: 36px 52px;
   }
+
   h1 {
-    color: #818CF8;
+    font-size: 26px;
+    font-weight: 800;
+    color: #0F172A;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px 0;
   }
+
   h2 {
-    color: #38BDF8;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1E293B;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px 0;
   }
+
   h3 {
-    color: #F472B6;
+    font-size: 15px;
+    font-weight: 700;
+    color: #4F46E5;
+    margin: 0 0 6px 0;
   }
+
+  p, li {
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 6px;
+  }
+
   code {
-    background: #1E293B;
-    color: #38BDF8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    background: #F1F5F9;
+    color: #4F46E5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #E2E8F0;
   }
+
+  pre {
+    background: #F8FAFC !important;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 6px 0;
+  }
+
+  pre code {
+    background: transparent !important;
+    border: none;
+    padding: 0;
+    font-size: 12px;
+    color: #0F172A;
+    line-height: 1.45;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 8px 0;
+  }
+
+  th {
+    background: #F1F5F9;
+    color: #0F172A;
+    font-weight: 700;
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 2px solid #CBD5E1;
+  }
+
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #E2E8F0;
+    color: #334155;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: #EEF2FF;
+    color: #4F46E5;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid #C7D2FE;
+    margin-bottom: 8px;
+  }
+
+  .tag-orange {
+    background: #FFF7ED;
+    color: #EA580C;
+    border-color: #FFEDD5;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .card {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .card-highlight {
+    background: #EEF2FF;
+    border: 1px solid #C7D2FE;
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .card-danger {
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .card-success {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+    padding: 14px;
+  }
+
   footer {
-    font-size: 0.5em;
+    font-size: 11px;
     color: #94A3B8;
   }
 ---
 
-# KICKSTORE: FLUTTER BOOTCAMP
-## Sesi 01: Menguasai Fondasi GetX & GetX CLI
-### 3 Pilar Utama: State, Route, & Dependency Management
+<!-- Slide 1: Cover -->
+<span class="tag">FLUTTER BOOTCAMP SMK • SESI 01</span>
 
-**Instruktur**: Sanbercode Flutter SMK Specialist  
-**Aplikasi Acuan**: KicksStore Mini E-Commerce  
-**Prasyarat**: Dasar Pemrograman Dart & Flutter SDK  
+# Menguasai Fondasi Arsitektur GetX & GetX CLI
+## Membedah 3 Pilar: State Management, Route, & Dependency Management
 
----
+<div class="grid-2" style="margin-top: 24px;">
+  <div class="card-highlight">
+    <h3 style="color: #4F46E5; margin-bottom: 4px;">🎯 Tujuan Pembelajaran</h3>
+    <p style="margin: 0; font-size: 13px;">Siswa memahami kelemahan arsitektur monolitik dasar Flutter dan mampu mengimplementasikan pola GetX Pattern modular secara profesional.</p>
+  </div>
+  <div class="card">
+    <h3 style="color: #0F172A; margin-bottom: 4px;">📱 Studi Kasus Proyek</h3>
+    <p style="margin: 0; font-size: 13px;"><strong>KicksStore</strong> (Aplikasi Mini E-Commerce Sepatu Berstandar Industri, Clean UI & Theme Ready).</p>
+  </div>
+</div>
 
-## DAFTAR AGENDA HARI INI 
-
-1. **Kenapa GetX?** Masalah Klasik Flutter Standar vs Solusi GetX
-2. **Pilar 1: State Management** (Reaktivitas `.obs` & `Obx`)
-3. **Pilar 2: Route Management** (Navigasi Bersih tanpa `BuildContext`)
-4. **Pilar 3: Dependency Management** (Injeksi Memori & `Bindings`)
-5. **GetX CLI**: Standarisasi Proyek & Otomasi Arsitektur Industri
-6. **Bedah Arsitektur Starter Kit**: Menjelajahi Repositori *KicksStore*
-7. **Kuis Interaktif & Persiapan Sesi 02**
-
----
-
-## 1. MASALAH KLASIK FLUTTER STANDAR
-
-Sebelum mengenal GetX, perhatikan kendala yang sering dihadapi developer:
-
-| Masalah di Flutter Standar | Dampak pada Aplikasi |
-|---|---|
-| **`setState()` Rebuild Terlalu Luas** | Seluruh pohon widget di-rebuild, performa boros baterai dan FPS drop |
-| **Ketergantungan `BuildContext`** | Pindah halaman atau menampilkan snackbar butuh context yang dalam |
-| **Boilerplate Provider / Bloc Rumit** | Butuh puluhan baris kode hanya untuk mengubah 1 angka counter |
-| **Manajemen Memori Manual** | Controller sering lupa di-dispose sehingga terjadi memory leak |
+<div style="margin-top: 24px; font-size: 12px; color: #64748B;">
+  <strong>Instruktur:</strong> Sanbercode Flutter SMK Specialist &nbsp;•&nbsp; <strong>Prasyarat:</strong> Flutter SDK & Dart Fundamental
+</div>
 
 ---
 
-## SOLUSI REVOLUSIONER: TIGA PILAR GETX
+<!-- Slide 2: Agenda -->
+<span class="tag">AGENDA SESI</span>
+## Apa yang Akan Kita Pelajari Hari Ini?
 
-GetX adalah framework mikro yang sangat ringan, cepat, dan powerful dengan 3 pilar:
+<div class="grid-3">
+  <div class="card">
+    <div style="font-size: 20px; margin-bottom: 4px;">⚠️</div>
+    <h3 style="color: #0F172A;">1. Problem Statement</h3>
+    <p style="font-size: 12.5px;">Kelemahan <code>setState()</code> dan ketergantungan <code>BuildContext</code> pada Flutter konvensional.</p>
+  </div>
+  <div class="card">
+    <div style="font-size: 20px; margin-bottom: 4px;">🏛️</div>
+    <h3 style="color: #4F46E5;">2. Tiga Pilar GetX</h3>
+    <p style="font-size: 12.5px;">Reaktivitas State (<code>.obs</code>/<code>Obx</code>), Route decoupled, dan Dependency Injection hemat RAM.</p>
+  </div>
+  <div class="card">
+    <div style="font-size: 20px; margin-bottom: 4px;">⚡</div>
+    <h3 style="color: #EA580C;">3. GetX CLI & Starter Kit</h3>
+    <p style="font-size: 12.5px;">Standarisasi struktur folder modular dan onboarding repositori proyek <strong>KicksStore</strong>.</p>
+  </div>
+</div>
 
-```
-                  ┌─────────────────────────────────┐
-                  │          GETX FRAMEWORK         │
-                  └────────────────┬────────────────┘
-          ┌────────────────────────┼────────────────────────┐
-          ▼                        ▼                        ▼
-┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│ STATE MANAGEMENT │     │ ROUTE MANAGEMENT │     │    DEPENDENCY    │
-│  (Data Reaktif)  │     │ (Navigasi Bebas) │     │    MANAGEMENT    │
-│   .obs  &  Obx   │     │  Get.toNamed()   │     │ Get.lazyPut & DI │
-└──────────────────┘     └──────────────────┘     └──────────────────┘
-```
-
-> **Prinsip Utama GetX**: *High Performance*, *Minimal Consumption*, dan *Clean Code*.
-
----
-
-## ANALOGI DUNIA NYATA: RESTORAN KICKSTORE
-
-Mari bayangkan arsitektur GetX seperti alur kerja di sebuah Restoran Modern:
-
-- 👤 **User**: Pembeli sepatu di aplikasi
-- 📋 **View (UI)**: Meja makan & buku menu (hanya menampilkan data)
-- 👨‍🍳 **Controller (Logika)**: Koki di dapur (mengolah data, menghitung harga)
-- 🚚 **Binding (Dependency)**: Supplier logistik (mengantar bahan ke dapur saat restoran buka)
-- 🚪 **Route (Navigasi)**: Pintu antar ruangan (VIP room, kasir, dapur) tanpa perlu izin berbelit-belit
+<div class="card-highlight" style="margin-top: 18px; padding: 10px 16px;">
+  <p style="margin: 0; font-size: 13px;">💡 <strong>Metode Belajar:</strong> 40% Konsep Visual & Analogi + 40% Live Code Walkthrough + 20% Interactive Quiz.</p>
+</div>
 
 ---
 
-## PILAR 1: STATE MANAGEMENT
-### Apa Itu "State"?
+<!-- Slide 3: Masalah Flutter Standar -->
+<span class="tag tag-orange">LATAR BELAKANG</span>
+## Mengapa Industri Beralih dari Flutter Standar ke GetX?
 
-> **State** adalah informasi atau data yang dapat berubah selama aplikasi berjalan dan memengaruhi apa yang tampil di layar (misalnya: jumlah barang di keranjang, status login, list sepatu).
+<div class="grid-2">
+  <div class="card-danger">
+    <h3 style="color: #DC2626;">❌ Kendala di Flutter Standar</h3>
+    <ul style="padding-left: 18px; margin: 4px 0; font-size: 13px;">
+      <li><strong>Rebuild Boros:</strong> <code>setState()</code> merender ulang seluruh pohon widget Scaffold.</li>
+      <li><strong>Tergantung BuildContext:</strong> Pindah halaman dan menampilkan snackbar membutuhkan context yang dalam.</li>
+      <li><strong>Boilerplate Rumit:</strong> State management lain (Bloc/Provider) butuh file event & state yang bertele-tele.</li>
+      <li><strong>Kebocoran Memori:</strong> Controller manual rawan lupa di-dispose.</li>
+    </ul>
+  </div>
 
-### Cara Biasa vs Cara GetX
+  <div class="card-success">
+    <h3 style="color: #16A34A;">✅ Solusi Bersih GetX</h3>
+    <ul style="padding-left: 18px; margin: 4px 0; font-size: 13px;">
+      <li><strong>Rebuild Presisi:</strong> Hanya widget dalam <code>Obx</code> yang diperbarui secara selektif.</li>
+      <li><strong>Bebas BuildContext:</strong> Navigasi dan dialog dapat dipanggil dari layer bisnis mana pun.</li>
+      <li><strong>Sangat Ringkas:</strong> Cukup beri ekstensi <code>.obs</code> tanpa kode boilerplate.</li>
+      <li><strong>Otomatisasi Memori:</strong> Controller di-dispose otomatis begitu halaman ditutup.</li>
+    </ul>
+  </div>
+</div>
 
+---
+
+<!-- Slide 4: Tiga Pilar GetX -->
+<span class="tag">ARSITEKTUR UTAMA</span>
+## Mengenal Tiga Pilar Fondasi GetX
+
+GetX dibangun di atas 3 pilar independen yang bekerja secara harmonis:
+
+<div class="grid-3">
+  <div class="card-highlight">
+    <span class="tag">PILAR 1</span>
+    <h3 style="color: #1E293B;">State Management</h3>
+    <p style="font-size: 12.5px; margin-bottom: 8px;">Mengelola data yang berubah secara reaktif tanpa merender ulang seluruh layar.</p>
+    <code>var qty = 1.obs;</code><br>
+    <code>Obx(() => Text(...));</code>
+  </div>
+
+  <div class="card-highlight">
+    <span class="tag">PILAR 2</span>
+    <h3 style="color: #1E293B;">Route Management</h3>
+    <p style="font-size: 12.5px; margin-bottom: 8px;">Navigasi antar layar, parsing argumen, dan transition effect tanpa BuildContext.</p>
+    <code>Get.toNamed('/cart');</code><br>
+    <code>Get.back();</code>
+  </div>
+
+  <div class="card-highlight">
+    <span class="tag">PILAR 3</span>
+    <h3 style="color: #1E293B;">Dependency Management</h3>
+    <p style="font-size: 12.5px; margin-bottom: 8px;">Injeksi instansiasi controller ke memori secara lazy dan auto-dispose via Binding.</p>
+    <code>Get.lazyPut(() => Ctr());</code><br>
+    <code>Get.find<Ctr>();</code>
+  </div>
+</div>
+
+---
+
+<!-- Slide 5: Analogi Restoran -->
+<span class="tag">ANALOGI DUNIA NYATA</span>
+## Memahami GetX Seperti Operasional Restoran Modern
+
+<div class="grid-4">
+  <div class="card">
+    <div style="font-size: 22px;">👤</div>
+    <h3 style="color: #0F172A;">1. User</h3>
+    <p style="font-size: 12px; margin: 0;">Pembeli sepatu yang berinteraksi menekan tombol dan melihat produk di layar.</p>
+  </div>
+  <div class="card">
+    <div style="font-size: 22px;">📋</div>
+    <h3 style="color: #0F172A;">2. View (UI)</h3>
+    <p style="font-size: 12px; margin: 0;"><strong>Buku Menu & Meja.</strong> Hanya menampilkan data dan meneruskan klik user ke Controller.</p>
+  </div>
+  <div class="card card-highlight">
+    <div style="font-size: 22px;">👨‍🍳</div>
+    <h3 style="color: #4F46E5;">3. Controller</h3>
+    <p style="font-size: 12px; margin: 0;"><strong>Koki Dapur.</strong> Memproses data, menghitung diskon/kuantitas, dan mengelola state reaktif.</p>
+  </div>
+  <div class="card">
+    <div style="font-size: 22px;">🚚</div>
+    <h3 style="color: #0F172A;">4. Binding</h3>
+    <p style="font-size: 12px; margin: 0;"><strong>Distributor Bahan.</strong> Menyiapkan koki & bahan tepat saat pesanan tiba, lalu membereskan saat selesai.</p>
+  </div>
+</div>
+
+<div class="card" style="margin-top: 14px; background: #F8FAFC;">
+  <p style="margin: 0; font-size: 12.5px;">💡 <strong>Aturan Emas:</strong> View tidak boleh memproses logika matematika/API! Semua logika wajib ada di dalam Controller.</p>
+</div>
+
+---
+
+<!-- Slide 6: Deep Dive State Management -->
+<span class="tag">PILAR 1: STATE MANAGEMENT</span>
+## Reaktivitas Presisi: Perbandingan Kode
+
+<div class="grid-2">
+  <div class="card">
+    <h3 style="color: #DC2626;">❌ Pola Tradisional (Boros Rebuild)</h3>
 ```dart
-// ❌ CARA BIASA (StatefulWidget + setState)
-int counter = 0;
-void increment() {
-  setState(() {
-    counter++; // Merender ulang SELURUH Scaffold halaman!
-  });
+class _CounterState extends State<CounterPage> {
+  int counter = 0;
+
+  void add() {
+    setState(() {
+      counter++; // Seluruh Scaffold di-rebuild!
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: Text("$counter")),
+      floatingActionButton: FloatingActionButton(onPressed: add),
+    );
+  }
 }
 ```
+  </div>
 
+  <div class="card card-highlight">
+    <h3 style="color: #16A34A;">✅ Pola Reaktif GetX (Presisi Tinggi)</h3>
 ```dart
-// ✅ CARA GETX (Reaktif murni)
-var counter = 0.obs; // Cukup tambahkan .obs
-void increment() => counter++; // Otomatis memberitahu widget yang mendengar
+// Controller (Logika)
+class CartController extends GetxController {
+  var counter = 0.obs; // Cukup tambah .obs
+  void add() => counter.value++;
+}
+
+// View (Tampilan)
+class CartView extends GetView<CartController> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // HANYA Text ini yang dirender ulang!
+      body: Center(child: Obx(() => Text("${controller.counter}"))),
+      floatingActionButton: FloatingActionButton(
+        onPressed: controller.add,
+      ),
+    );
+  }
+}
 ```
+  </div>
+</div>
 
 ---
 
-## CARA KERJA REAKTIVITAS: `.obs` & `Obx()`
+<!-- Slide 7: Tipe Data Reaktif -->
+<span class="tag">PILAR 1: TIPE DATA REAKTIF</span>
+## Tipe Data `.obs` yang Sering Dipakai di E-Commerce
 
-1. Tambahkan `.obs` di belakang variabel di **Controller**:
-   ```dart
-   class CartController extends GetxController {
-     var itemCount = 1.obs;      // RxInt
-     var isFavorite = false.obs;  // RxBool
-     var totalPrice = 0.0.obs;    // RxDouble
-     
-     void add() => itemCount.value++;
-   }
-   ```
-2. Bungkus HANYA bagian widget yang perlu diupdate dengan `Obx` di **View**:
-   ```dart
-   Obx(() => Text("Jumlah Item: ${controller.itemCount}"))
-   ```
->  **Keajaiban Performa**: Hanya `Text` ini saja yang di-rebuild! Tombol, AppBar, dan Background tetap tenang tanpa komputasi ulang.
+Tipe data dasar Dart dapat diubah menjadi reaktif secara instan:
 
----
+| Tipe Data Asli | Tipe Data Reaktif GetX | Contoh Deklarasi | Studi Kasus di KicksStore |
+|---|---|---|---|
+| `int` | `RxInt` | `var quantity = 1.obs;` | Jumlah kuantitas checkout sepatu |
+| `double` | `RxDouble` | `var totalPrice = 0.0.obs;` | Total tagihan belanja di keranjang |
+| `String` | `RxString` | `var selectedSize = '42'.obs;` | Ukuran sepatu yang dipilih pembeli |
+| `bool` | `RxBool` | `var isFavorite = false.obs;` | Status icon love wishlist produk |
+| `List<T>` | `RxList<T>` | `var cartList = <Item>[].obs;` | Daftar barang di keranjang belanja |
 
-## PILAR 2: ROUTE MANAGEMENT
-### Navigasi Tanpa "BuildContext"
-
-Di Flutter bawaan, kita harus membawa `BuildContext`:
-```dart
-// ❌ FLUTTER STANDAR (Panjang dan butuh context)
-Navigator.of(context).push(
-  MaterialPageRoute(builder: (context) => const DetailView()),
-);
-```
-
-Di GetX, navigasi sangat manusiawi dan dapat dipanggil dari mana saja:
-```dart
-// ✅ GETX ROUTING (Ringkas, elegan, global)
-Get.toNamed('/detail');                      // Pindah halaman
-Get.back();                                 // Kembali (Pop)
-Get.offNamed('/home');                      // Pindah & hapus halaman sebelumnya
-Get.offAllNamed('/login');                  // Hapus semua history (misal: Logout)
-```
+<div class="card-danger" style="margin-top: 12px; padding: 8px 14px;">
+  <p style="margin: 0; font-size: 12.5px;">⚠️ <strong>Peringatan Umum:</strong> Jangan membungkus widget dengan <code>Obx</code> jika di dalamnya tidak ada variabel <code>.obs</code>, karena akan menyebabkan runtime exception!</p>
+</div>
 
 ---
 
-## MENGIRIM ARGUMEN & DATA ANTAR HALAMAN
+<!-- Slide 8: Route Management -->
+<span class="tag">PILAR 2: ROUTE MANAGEMENT</span>
+## Navigasi Bersih Tanpa Ketergantungan BuildContext
 
-Bagaimana saat user klik produk di Katalog lalu ingin membuka Detail Produk?
+Navigasi di GetX berbasis nama rute (*Named Routing*) yang terpusat di `app_routes.dart`:
 
-### 1. Di Halaman Pengirim (Home):
+<div class="grid-2">
+  <div class="card">
+    <h3 style="color: #0F172A;">Perintah Navigasi Utama</h3>
+    <ul style="padding-left: 18px; font-size: 13px;">
+      <li><code>Get.toNamed('/detail');</code><br><span style="font-size: 11.5px; color: #64748B;">Pindah ke halaman detail (menumpuk di stack).</span></li>
+      <li><code>Get.back();</code><br><span style="font-size: 11.5px; color: #64748B;">Kembali ke halaman sebelumnya (pop stack).</span></li>
+      <li><code>Get.offNamed('/home');</code><br><span style="font-size: 11.5px; color: #64748B;">Pindah dan tutup halaman saat ini.</span></li>
+      <li><code>Get.offAllNamed('/login');</code><br><span style="font-size: 11.5px; color: #64748B;">Hapus seluruh riwayat layar (misal saat Logout).</span></li>
+    </ul>
+  </div>
+
+  <div class="card card-highlight">
+    <h3 style="color: #4F46E5;">Mengirim & Menerima Data (Arguments)</h3>
 ```dart
+// 1. Mengirim dari HomeView
 Get.toNamed('/detail', arguments: {
   'id': 'shoe-01',
-  'name': 'Nike Air Jordan High',
+  'name': 'Nike Air Jordan',
   'price': 2499000,
 });
-```
 
-### 2. Di Halaman Penerima (Detail Controller):
-```dart
+// 2. Menerima di DetailController
 class DetailController extends GetxController {
-  late Map<String, dynamic> product;
+  late Map<String, dynamic> item;
 
   @override
   void onInit() {
     super.onInit();
-    product = Get.arguments; // Langsung tangkap datanya!
+    item = Get.arguments; // Langsung tangkap!
   }
 }
 ```
+  </div>
+</div>
 
 ---
 
-## PILAR 3: DEPENDENCY MANAGEMENT
-### Apa Itu Dependency Injection (DI)?
+<!-- Slide 9: Dependency Management -->
+<span class="tag">PILAR 3: DEPENDENCY MANAGEMENT</span>
+## Injeksi Dependensi: Hemat Memori & Otomatisasi Siklus Hidup
 
-> **Dependency Injection** adalah cara memberikan controller atau service ke widget yang membutuhkan **tanpa harus membuat instance baru berulang-ulang**.
+Mengapa kita tidak boleh menulis `final controller = CartController();` di dalam widget View?
+Karena setiap kali widget di-build ulang, objek baru akan tercipta dan memori membengkak.
 
-```dart
-// ❌ Tanpa DI: Boros memori, state berbeda di tiap tempat
-CartController cart = CartController(); 
+<div class="grid-2">
+  <div class="card">
+    <h3 style="color: #0F172A;">Pola Injeksi via GetX</h3>
+    <ul style="padding-left: 18px; font-size: 13px;">
+      <li><code>Get.put(Controller());</code><br><span style="font-size: 11.5px; color: #64748B;">Langsung dimuat ke RAM saat itu juga.</span></li>
+      <li><code>Get.lazyPut(() => Controller());</code><br><span style="font-size: 11.5px; color: #64748B;"><strong>Sangat Dianjurkan!</strong> Objek baru dimuat saat pertama kali diakses.</span></li>
+      <li><code>Get.find<Controller>();</code><br><span style="font-size: 11.5px; color: #64748B;">Mengambil objek singleton yang sudah terdaftar.</span></li>
+    </ul>
+  </div>
 
-// ✅ Dengan GetX DI: Mengambil instance yang SAMA di mana saja
-CartController cart = Get.find<CartController>();
-```
-
-### Metode Injeksi di GetX:
-- `Get.put(Controller())` : Dibuat langsung di memori saat itu juga.
-- `Get.lazyPut(() => Controller())` : Hemat RAM! Objek baru dibuat saat pertama kali digunakan (`Get.find`).
-- `Get.find<Controller>()` : Mengambil objek yang sudah terdaftar.
-
----
-
-## JEMBATAN OTOMATIS: GETX BINDINGS
-
-Agar kode bersih, kita tidak menaruh `Get.lazyPut` di dalam widget View. Kita taruh di file khusus bernama **`Binding`**:
-
+  <div class="card card-highlight">
+    <h3 style="color: #4F46E5;">Peran Sakti File Binding</h3>
 ```dart
 // lib/app/modules/cart/bindings/cart_binding.dart
 class CartBinding extends Bindings {
@@ -227,156 +463,166 @@ class CartBinding extends Bindings {
   }
 }
 ```
-
-### Siklus Hidup Memori Otomatis:
-1. User masuk ke `/cart` ➡️ `CartBinding` aktif ➡️ `CartController` dimuat ke RAM.
-2. User menekan tombol Back ➡️ `CartController` **otomatis dihapus (disposed)** dari RAM.
-3. Bebas *Memory Leak* tanpa perlu mengetik `dispose()` manual!
+    <p style="font-size: 11.5px; margin: 4px 0 0 0; color: #334155;">Saat user keluar dari layar keranjang, <code>CartController</code> otomatis dihapus dari memori secara higienis!</p>
+  </div>
+</div>
 
 ---
 
-## MENGENAL GETX CLI: STANDAR INDUSTRI
+<!-- Slide 10: GetX CLI -->
+<span class="tag">STANDARISASI INDUSTRI</span>
+## Mengapa Wajib Menggunakan GetX CLI?
 
-> **GetX CLI** adalah Command Line Tool resmi dari komunitas GetX untuk mengotomatisasi pembuatan folder, file, controller, view, dan routes dalam hitungan detik.
+**GetX CLI** adalah alat baris perintah resmi untuk mengotomatisasi pembuatan struktur arsitektur:
 
-### Kenapa Wajib Menggunakan GetX CLI di SMK?
-1. **Standarisasi**: Seluruh siswa di kelas memiliki struktur folder dan penamaan yang 100% identik.
-2. **Anti-Typo**: Menghilangkan kesalahan manusia saat mendaftarkan routing.
-3. **Cepat**: Membuat 1 fitur lengkap (View + Controller + Binding + Route) hanya dengan 1 baris perintah terminal.
+<div class="grid-3">
+  <div class="card">
+    <div style="font-size: 20px;">⚡</div>
+    <h3 style="color: #0F172A;">Super Cepat</h3>
+    <p style="font-size: 12px; margin: 0;">Membuat 1 modul lengkap (View, Controller, Binding, dan Route terdaftar) hanya dengan 1 baris perintah dalam 2 detik.</p>
+  </div>
+  <div class="card">
+    <div style="font-size: 20px;">🛡️</div>
+    <h3 style="color: #0F172A;">Bebas Typo</h3>
+    <p style="font-size: 12px; margin: 0;">Tidak ada lagi rute salah ketik atau lupa mendaftarkan controller ke <code>app_pages.dart</code>.</p>
+  </div>
+  <div class="card">
+    <div style="font-size: 20px;">🏢</div>
+    <h3 style="color: #0F172A;">Standar Industri</h3>
+    <p style="font-size: 12px; margin: 0;">Seluruh 30+ siswa di laboratorium memiliki struktur folder 100% konsisten dan mudah dinilai.</p>
+  </div>
+</div>
+
+<div class="card-highlight" style="margin-top: 14px;">
+  <h3 style="color: #4F46E5; margin-bottom: 4px;">Perintah Utama GetX CLI:</h3>
+  <code style="font-size: 12px;">get create project:e_commerce</code> &nbsp;|&nbsp; 
+  <code style="font-size: 12px;">get create page:home</code> &nbsp;|&nbsp; 
+  <code style="font-size: 12px;">get create page:detail</code> &nbsp;|&nbsp; 
+  <code style="font-size: 12px;">get create page:cart</code>
+</div>
 
 ---
 
-## CHEAT SHEET PERINTAH GETX CLI
-
-Perintah yang digunakan untuk membangun proyek KicksStore:
-
-```bash
-# 1. Inisialisasi Proyek Baru
-get create project:e_commerce
-
-# 2. Membuat Modul Lengkap (View + Controller + Binding + Route Otomatis)
-get create page:home
-get create page:detail
-get create page:cart
-get create page:checkout
-get create page:wishlist
-get create page:login
-get create page:register
-get create page:orders
-```
-
----
-
-## ANATOMI STRUKTUR FOLDER GETX PATTERN
-
-Inilah struktur folder berstandar industri yang sudah ada di proyek kita:
+<!-- Slide 11: Anatomi Folder -->
+<span class="tag">STRUKTUR PROYEK</span>
+## Anatomi Folder Resmi GetX Pattern pada KicksStore
 
 ```
 lib/
 ├── app/
-│   ├── core/
-│   │   └── theme/            <-- AppColors & AppTheme (Dark/Light)
-│   ├── data/                 <-- Models, Providers/Dio, Hive Box
-│   ├── modules/              <-- Modular Per Fitur
-│   │   ├── home/
-│   │   │   ├── bindings/     <-- home_binding.dart
-│   │   │   ├── controllers/  <-- home_controller.dart
-│   │   │   └── views/        <-- home_view.dart & components/
-│   │   ├── detail/
-│   │   ├── cart/
-│   │   └── ... (8 Modul)
+│   ├── core/theme/         --> AppColors & AppTheme (Mendukung Dark & Light Mode)
+│   ├── data/               --> Models, Dio ApiService, Hive Box (Mulai Sesi 05)
+│   ├── modules/            --> Modular per Fitur Aplikasi
+│   │   ├── home/           --> bindings/, controllers/, views/ & components/
+│   │   ├── detail/         --> Detail Produk, Size Selector, Add to Cart
+│   │   ├── cart/           --> Keranjang Belanja, Qty Stepper, Total Biaya
+│   │   ├── wishlist/       --> Koleksi Produk Favorit
+│   │   ├── checkout/       --> Kurir, Alamat, Metode Pembayaran
+│   │   ├── login/          --> Autentikasi Pengguna
+│   │   ├── register/       --> Pendaftaran Akun Baru
+│   │   └── orders/         --> Riwayat Transaksi & Status Pesanan
 │   └── routes/
-│       ├── app_pages.dart    <-- Daftar Route & Binding Terdaftar
-│       └── app_routes.dart   <-- Konstanta String Path (/home, /cart)
-└── main.dart                 <-- GetMaterialApp & Entrypoint
+│       ├── app_pages.dart  --> Pendaftaran Route + Binding Resmi
+│       └── app_routes.dart --> Konstanta Path String (/home, /detail, dll)
+└── main.dart               --> Inisialisasi GetMaterialApp & Global Theme
 ```
 
 ---
 
-## BAGAIMANA SEMUA INI TERHUBUNG? (FLOW CHART)
+<!-- Slide 12: Starter Kit Onboarding -->
+<span class="tag tag-orange">STRATEGI PEMBELAJARAN</span>
+## Starter Kit KicksStore: Mengapa UI Disiapkan Penuh?
 
-```
-[ Klik Tombol di HomeView ]
-             │
-             ▼
-   Get.toNamed('/detail')
-             │
-             ▼
-   [ app_pages.dart ] ──── Menemukan Route '/detail'
-             │
-      ┌──────┴──────┐
-      ▼             ▼
-[ DetailBinding ]  [ DetailView ]
-      │             │
-      ▼             ▼
-Injeksi Controller  Menampilkan UI Adaptif
-(DetailController)  (Light/Dark Theme)
-      │             │
-      └──────┬──────┘
-             ▼
-[ Obx Merender State Reaktif ]
-```
+Di branch **`starter-kit`**, seluruh tampilan antarmuka (8 Modul) sudah dibuatkan dengan rapi:
 
----
+<div class="grid-2">
+  <div class="card">
+    <h3 style="color: #0F172A;">Keuntungan bagi Siswa SMK</h3>
+    <ul style="padding-left: 18px; font-size: 13px;">
+      <li><strong>Fokus pada Logika Bisnis:</strong> Tidak habis waktu 2 jam hanya untuk membetulkan <code>RenderFlex overflowed</code>.</li>
+      <li><strong>Estetika Profesional:</strong> Desain sudah setara aplikasi retail komersial modern.</li>
+      <li><strong>Light & Dark Mode:</strong> Seluruh layar otomatis adaptif terhadap tema sistem.</li>
+    </ul>
+  </div>
 
-## MEMPERKENALKAN STARTER-KIT KICKSSTORE
-
-Dalam pembelajaran ini, seluruh tampilan antarmuka (**8 Modul UI**) telah disiapkan di branch **`starter-kit`**:
-
-- 🌟 UI Modern, Bersih, dan Komersial (Standar Industri E-Commerce)
-- 🌓 Mendukung **Light Mode** dan **Dark Mode** secara otomatis
-- 🛒 8 Modul Lengkap: Home, Detail, Cart, Wishlist, Checkout, Login, Register, Orders
-- 🎯 **Tugas Kita di Sesi-Sesi Berikutnya**:
-  Fokus 100% mempelajari dan menginjeksi:
-  *Logika Bisnis*, *Reaktivitas GetX*, *Dio Rest API*, *Hive NoSQL Storage*, dan *Firebase Auth/Firestore*!
+  <div class="card card-highlight">
+    <h3 style="color: #4F46E5;">Alur Belajar Sesi 02 s.d. Sesi 12</h3>
+    <p style="font-size: 12.5px;">Di sesi-sesi berikutnya, kita akan fokus menyuntikkan:</p>
+    <ol style="padding-left: 18px; font-size: 12px; margin: 0;">
+      <li>Logika Reaktivitas State & Counter (Sesi 02–03)</li>
+      <li>Form Validation & Regex (Sesi 04)</li>
+      <li>Dio Rest API & Shimmer (Sesi 05–06)</li>
+      <li>SharedPreferences & Hive NoSQL (Sesi 07–08)</li>
+      <li>Firebase Auth & Cloud Firestore (Sesi 09–10)</li>
+    </ol>
+  </div>
+</div>
 
 ---
 
-## KUIS INTERAKTIF CEPAT (CEK PEMAHAMAN) 
+<!-- Slide 13: Kuis Interaktif -->
+<span class="tag">KUIS INTERAKTIF</span>
+## Uji Pemahaman Cepat (Check for Understanding)
 
-### Pertanyaan 1:
-> *"Apa yang terjadi pada widget Text yang dibungkus `Obx(() => Text(...))` ketika variabel `.obs` di dalamnya berubah nilai?"*
-- **A)** Seluruh halaman Scaffold dirender ulang
-- **B)** Hanya widget Text itu saja yang di-update secara efisien
-- **C)** Aplikasi mengalami crash
+<div class="grid-3">
+  <div class="card">
+    <span class="tag">KUIS 1</span>
+    <p style="font-size: 13px; font-weight: 600; color: #0F172A;">Apa yang terjadi saat nilai variabel <code>.obs</code> diubah?</p>
+    <p style="font-size: 12px; color: #64748B;">
+      A. Seluruh halaman Scaffold rebuild.<br>
+      <strong>B. Hanya widget dalam <code>Obx</code> yang diperbarui secara efisien.</strong><br>
+      C. Aplikasi berhenti/freeze.
+    </p>
+  </div>
 
----
+  <div class="card">
+    <span class="tag">KUIS 2</span>
+    <p style="font-size: 13px; font-weight: 600; color: #0F172A;">Perintah apa untuk pindah ke halaman keranjang?</p>
+    <p style="font-size: 12px; color: #64748B;">
+      A. <code>Navigator.jump('/cart');</code><br>
+      <strong>B. <code>Get.toNamed('/cart');</code></strong><br>
+      C. <code>Route.open('/cart');</code>
+    </p>
+  </div>
 
-## KUIS INTERAKTIF CEPAT (CEK PEMAHAMAN) 
-
-### Pertanyaan 2:
-> *"Apa keuntungan utama memanggil navigasi `Get.toNamed('/cart')` dibanding `Navigator.push` bawaan Flutter?"*
-- **A)** Tidak membutuhkan `BuildContext` dan lebih ringkas
-- **B)** Harus selalu menulis StatefulWidget
-- **C)** Hanya bisa berjalan di web browser
-
----
-
-## KUIS INTERAKTIF CEPAT (CEK PEMAHAMAN) 
-
-### Pertanyaan 3:
-> *"Apa peran dari file `Binding` pada arsitektur GetX?"*
-- **A)** Menghias tampilan tombol dengan warna gradien
-- **B)** Menghubungkan halaman dengan Controller-nya menggunakan Dependency Injection
-- **C)** Mengubah nama aplikasi di Play Store
-
----
-
-## PENUTUP & CHECKLIST PERSIAPAN SESI 02 
-
-###  Yang Telah Kita Kuasai Hari Ini:
-1. Memahami 3 Pilar GetX: State, Route, dan Dependency Management.
-2. Memahami peran GetX CLI dalam standarisasi arsitektur modular.
-3. Mengenal struktur folder `lib/app/` (routes, modules, data, core).
-
-###  Persiapan untuk Sesi 02:
-1. Pastikan Flutter SDK & VS Code / Android Studio siap dijalankan.
-2. Clone repository dan checkout ke branch `starter-kit`.
-3. Jalankan `flutter run` untuk memastikan UI tampil sempurna di emulator/device!
+  <div class="card">
+    <span class="tag">KUIS 3</span>
+    <p style="font-size: 13px; font-weight: 600; color: #0F172A;">Apa tugas utama dari file <code>Binding</code>?</p>
+    <p style="font-size: 12px; color: #64748B;">
+      A. Mengatur background warna layar.<br>
+      <strong>B. Menyuntikkan Controller ke memori via Dependency Injection.</strong><br>
+      C. Menyimpan password akun user.
+    </p>
+  </div>
+</div>
 
 ---
 
-# TERIMA KASIH! 
-## Mari Bangun Masa Depan Mobile Developer SMK yang Kompeten & Siap Industri! 
+<!-- Slide 14: Penutup & Checklist -->
+<span class="tag">RANGKUMAN & PERSIAPAN</span>
+## Langkah Selanjutnya: Memulai Sesi 02
 
-*Pertanyaan & Diskusi: Silakan tanyakan ke instruktur.*
+<div class="grid-2">
+  <div class="card-success">
+    <h3 style="color: #16A34A;">🎯 Pencapaian Hari Ini</h3>
+    <ul style="padding-left: 18px; font-size: 13px; margin: 0;">
+      <li>Memahami 3 Pilar GetX: State, Route, dan Dependency Management.</li>
+      <li>Memahami efisiensi reaktivitas <code>.obs</code> dan <code>Obx</code> dibanding <code>setState()</code>.</li>
+      <li>Mengenal struktur modular GetX CLI dan peran file Binding.</li>
+    </ul>
+  </div>
+
+  <div class="card-highlight">
+    <h3 style="color: #4F46E5;"> Checklist Persiapan Siswa Sesi 02</h3>
+    <ul style="padding-left: 18px; font-size: 13px; margin: 0;">
+      <li>Pastikan repositori telah di-clone ke laptop masing-masing.</li>
+      <li>Jalankan perintah: <code>git checkout starter-kit</code></li>
+      <li>Jalankan <code>flutter run</code> untuk memverifikasi aplikasi berjalan mulus di emulator.</li>
+    </ul>
+  </div>
+</div>
+
+<div style="text-align: center; margin-top: 30px;">
+  <h2 style="color: #4F46E5; margin: 0;">Terima Kasih! Sampai Jumpa di Sesi 02 🚀</h2>
+  <p style="font-size: 13px; color: #64748B; margin-top: 4px;">Sesi 02: Memulai Reaktivitas State & Navigasi Interaktif pada Katalog KicksStore</p>
+</div>

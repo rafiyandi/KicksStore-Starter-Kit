@@ -85,14 +85,18 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
   - **Dedicated Branch Siswa**: `starter-kit` (Siswa dapat meng-checkout branch ini untuk memulai pembelajaran dengan UI siap pakai tanpa boilerplate kosong).
 
 ### Milestone 2: Sesi 01 - Fondasi GetX (3 Pilar), GetX CLI & Onboarding Starter Kit
-- **Slide Deck Presentasi Lengkap (Multi-Format)**:
-  - **PowerPoint**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.pptx` (Format resmi Microsoft PowerPoint, siap tayang di proyektor).
+- **Slide Deck Presentasi Lengkap (Tema Terang / Clean Light Theme)**:
+  - **PowerPoint**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.pptx` (Format Microsoft PowerPoint 16:9, typography proporsional, card styling, bersih & elegan).
   - **Web Interactive Slide**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.html` (Bisa dibuka di browser apa pun dalam mode fullscreen presentation).
   - **Source Markdown**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.md`.
+  - **Desain & Tipografi**:
+    * Tema Terang Modern (Latar putih `#FFFFFF`, kartu Slate `#F8FAFC`, aksen Indigo `#4F46E5` & Orange `#EA580C`).
+    * Tipografi proporsional berbasis font *Plus Jakarta Sans* & *JetBrains Mono* (ukuran judul 26px, teks 14-15px, kode 12px, tanpa teks raksasa).
+    * Tata letak berbasis komponen kartu (Grid 2, Grid 3, Grid 4) tanpa diagram ASCII kasar.
   - Meliputi:
     1. Evaluasi masalah `setState()` & `BuildContext` di Flutter standar.
-    2. Pilar 1: State Management (Reaktif `.obs` vs `Obx`).
-    3. Pilar 2: Route Management (`Get.toNamed`, `Get.back`, passing arguments tanpa `BuildContext`).
+    2. Pilar 1: State Management (Reaktif `.obs` vs `Obx`, tabel tipe data Rx).
+    3. Pilar 2: Route Management (`Get.toNamed`, `Get.back`, passing arguments).
     4. Pilar 3: Dependency Management (`Get.lazyPut`, `Get.find`, Bindings, memory auto-dispose).
     5. GetX CLI: Command cheat sheet & standarisasi arsitektur modular `lib/app/`.
     6. Analogi Dunia Nyata: Alur Restoran Modern (View = Meja/Menu, Controller = Koki/Dapur, Binding = Supplier).
@@ -100,6 +104,7 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
 - **Onboarding Proyek Siswa**:
   - Siswa siap meng-clone dan checkout ke branch `starter-kit`.
 - **Git Checkpoint**: `sesi-01`
+
 
 
 ---
