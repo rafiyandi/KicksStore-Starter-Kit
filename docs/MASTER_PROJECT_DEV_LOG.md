@@ -157,6 +157,38 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
 - **Status Eksekusi**:  **Selesai (Verified 0 Errors with dart analyze)**
 - **Git Checkpoint**: `sesi-03`
 
+### Milestone 5: Sesi 04 - Form Handling, Validasi Input & State Management Form (Login & Register)
+- **Tujuan Pembelajaran Siswa**:
+  1. Memahami siklus hidup controller input (`TextEditingController`) dan kewajiban `dispose()` di dalam `onClose()` untuk mencegah *memory leaks*.
+  2. Mengimplementasikan validasi form Flutter yang kokoh menggunakan `GlobalKey<FormState>` dan `TextFormField` dengan `AutovalidateMode.onUserInteraction`.
+  3. Memvalidasi format email menggunakan Regular Expression (Regex) dan aturan panjang sandi minimal (>= 6 karakter).
+  4. Menerapkan reaktivitas GetX untuk elemen interaktif form: toggle *password visibility* (sembunyikan/lihat password), checkbox *Remember Me*, dan status *loading indicator* saat proses submit berlangsung.
+  5. Memastikan kecocokan kata sandi (*password confirmation match*) pada halaman pendaftaran.
+- **Daftar Berkas & Rencana Aksi Logika**:
+  1. `lib/app/modules/login/controllers/login_controller.dart`:
+     - Tambahkan `GlobalKey<FormState> formKey`.
+     - Inisialisasi `emailController` dan `passwordController`.
+     - Bersihkan kontroler pada `onClose()`.
+     - Tambahkan variabel reaktif: `isPasswordHidden = true.obs`, `rememberMe = true.obs`, `isLoading = false.obs`.
+     - Method validasi: `validateEmail(String? value)`, `validatePassword(String? value)`.
+     - Method aksi: `togglePasswordVisibility()`, `toggleRememberMe(bool? val)`, dan `login()`.
+  2. `lib/app/modules/login/views/login_view.dart`:
+     - Bungkus form dengan widget `Form(key: controller.formKey)`.
+     - Ganti `TextField` biasa menjadi `TextFormField` yang terikat ke `controller.emailController` dan `controller.passwordController`.
+     - Hubungkan tombol login dengan status reaktif `controller.isLoading.value` (tampilkan loading spinner saat submit).
+  3. `lib/app/modules/register/controllers/register_controller.dart`:
+     - Tambahkan `GlobalKey<FormState> formKey`.
+     - Inisialisasi `nameController`, `emailController`, `passwordController`, dan `confirmPasswordController`.
+     - Tambahkan reaktif: `isPasswordHidden = true.obs`, `isConfirmPasswordHidden = true.obs`, `isLoading = false.obs`.
+     - Method validasi: `validateName()`, `validateEmail()`, `validatePassword()`, `validateConfirmPassword()`.
+     - Method aksi: `togglePasswordVisibility()`, `toggleConfirmPasswordVisibility()`, dan `register()`.
+  4. `lib/app/modules/register/views/register_view.dart`:
+     - Bungkus form dengan `Form(key: controller.formKey)`.
+     - Pasang validasi real-time pada seluruh field input.
+     - Hubungkan tombol pendaftaran dengan `controller.register()`.
+- **Status Eksekusi**: ✅ **Selesai (Verified 0 Errors with dart analyze & 8 Unit Tests Passed)**
+- **Git Checkpoint**: `sesi-04`
+
 ---
 
 ## 5. RENCANA EKSEKUSI SESI 01 s/d SESI 12
@@ -168,7 +200,7 @@ Status dan rencana eksekusi modular:
 | **Sesi 01** | Fondasi GetX (3 Pilar) & GetX CLI | Penyusunan slide PPT komprehensif, analogi arsitektur, kuis interaktif, onboarding `starter-kit` |  **Selesai** (`sesi-01`) |
 | **Sesi 02** | Reaktivitas State & Navigasi GetX | Filter kategori reaktif, cart badge AppBar, favorite toggle, navigasi berargumen ke Detail, quantity counter & snackbar |  **Selesai** (`sesi-02`) |
 | **Sesi 03** | Arsitektur MVVM & Dependency Injection | Lapisan Model Type-Safe (`ProductModel`, `CartItemModel`), refactor ViewModel, CartController terpusat, komunikasi via `Get.find` |  **Selesai** (`sesi-03`) |
-| **Sesi 04** | Form Handling & Validasi Input | Form validasi `login_view` & `register_view`, validasi email regex & password, `TextEditingController` via GetX | `sesi-04` |
+| **Sesi 04** | Form Handling & Validasi Input | Form validasi `login_view` & `register_view`, validasi email regex & password, `TextEditingController` via GetX |  **Selesai** (`sesi-04`) |
 
 | **Sesi 05** | Networking: Rest API & JSON Serializer | Setup `DioService`, `ProductModel` (fromJson/toJson), fetching katalog produk dummy API, error handling snackbar | `sesi-05` |
 | **Sesi 06** | Dio Interceptor & State UI | Dio interceptor (logging & auth token), Shimmer loading skeleton pada `home_view`, state empty & error retry | `sesi-06` |
