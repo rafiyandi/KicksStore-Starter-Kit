@@ -96,9 +96,33 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
   - Siswa siap meng-clone dan checkout ke branch `starter-kit`.
 - **Git Checkpoint**: `sesi-01`
 
-
-
-
+### Milestone 3: Sesi 02 - Reaktivitas State & Navigasi Interaktif GetX
+- **Tujuan Pembelajaran Siswa**:
+  1. Memahami perbedaan nyata antara UI statis dengan UI reaktif (`.obs` & `Obx`).
+  2. Mengimplementasikan variabel reaktif pertama: `RxInt` (Cart Counter), `RxString` (Category Filter), dan `RxBool` (Favorite toggle).
+  3. Menguasai navigasi berargumen dari katalog `HomeView` menuju `DetailView` tanpa `BuildContext`.
+  4. Menerapkan feedback instan via `Get.snackbar()`.
+- **Daftar Berkas & Perubahan Logika**:
+  1. `lib/app/modules/home/controllers/home_controller.dart`:
+     - Menambahkan state reaktif: `cartCount = 0.obs`, `selectedCategory = 'All'.obs`, `favoriteIds = <String>{}.obs`.
+     - Menambahkan mock data katalog produk dinamis lengkap (ID, nama, harga, gambar, rating, kategori).
+     - Menambahkan method: `changeCategory(String category)`, `addToCart()`, `toggleFavorite(String productId)`.
+  2. `lib/app/modules/home/views/home_view.dart`:
+     - Mengubah Filter Chips menjadi dinamis dengan `Obx` (berubah warna aktif saat diklik).
+     - Membungkus icon keranjang di AppBar dengan `Obx` yang menampilkan badge angka `cartCount`.
+     - Menghubungkan klik kartu produk menuju `/detail` dengan membawa objek data produk.
+  3. `lib/app/modules/home/views/components/product_card.dart`:
+     - Menyesuaikan menerima callback tap navigasi, aksi love wishlist, dan tombol `+` quick add to cart.
+  4. `lib/app/modules/detail/controllers/detail_controller.dart`:
+     - Menerima objek produk via `Get.arguments`.
+     - Menambahkan state reaktif kuantitas: `quantity = 1.obs`, method `increment()`, `decrement()`.
+     - Menambahkan state ukuran sepatu: `selectedSize = '42'.obs`, method `changeSize()`.
+     - Menambahkan method `addToCart()` yang menaikkan kuantitas dan memicu `Get.snackbar()`.
+  5. `lib/app/modules/detail/views/detail_view.dart`:
+     - Mengikat (bind) data dinamis dari `controller.product`.
+     - Menghubungkan Size Selector chips, Quantity counter, dan tombol CTA "Tambah ke Keranjang".
+- **Status Eksekusi**:  **Selesai (Verified 0 Errors with dart analyze)**
+- **Git Checkpoint**: `sesi-02`
 
 ---
 
@@ -109,8 +133,9 @@ Status dan rencana eksekusi modular:
 | Sesi | Topik Utama | Rencana Aksi Master Project | Status / Checkpoint Tag |
 |---|---|---|---|
 | **Sesi 01** | Fondasi GetX (3 Pilar) & GetX CLI | Penyusunan slide PPT komprehensif, analogi arsitektur, kuis interaktif, onboarding `starter-kit` |  **Selesai** (`sesi-01`) |
-| **Sesi 02** | Layouting & State Management Dasar | Bedah `Row`, `Column`, `GridView` pada katalog produk, implementasi reaktivitas GetX pertama (`RxInt` cart badge, `RxBool` favorite) | `sesi-02` |
+| **Sesi 02** | Reaktivitas State & Navigasi GetX | Filter kategori reaktif, cart badge AppBar, favorite toggle, navigasi berargumen ke Detail, quantity counter & snackbar |  **Selesai** (`sesi-02`) |
 | **Sesi 03** | Advanced State Management GetX | Refactor logika ke `HomeController` & `DetailController`, pemisahan logic dari view, navigation `Get.toNamed` berargumen | `sesi-03` |
+
 | **Sesi 04** | Form Handling & Validasi Input | Form validasi `login_view` & `register_view`, validasi email regex & password, `TextEditingController` via GetX | `sesi-04` |
 | **Sesi 05** | Networking: Rest API & JSON Serializer | Setup `DioService`, `ProductModel` (fromJson/toJson), fetching katalog produk dummy API, error handling snackbar | `sesi-05` |
 | **Sesi 06** | Dio Interceptor & State UI | Dio interceptor (logging & auth token), Shimmer loading skeleton pada `home_view`, state empty & error retry | `sesi-06` |
