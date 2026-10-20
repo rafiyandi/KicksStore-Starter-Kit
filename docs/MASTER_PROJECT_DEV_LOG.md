@@ -141,9 +141,10 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
   4. `lib/app/modules/home/controllers/home_controller.dart`:
      - Refactor katalog dari `Map<String, dynamic>` mentah ke `List<ProductModel>`.
      - Menggunakan `Get.find<CartController>()` untuk membaca jumlah item keranjang belanja secara terpusat.
-  5. `lib/app/modules/detail/controllers/detail_controller.dart`:
+  5. `lib/app/modules/detail/controllers/detail_controller.dart` & `DetailView`:
      - Refactor objek `product` ke tipe `Rx<ProductModel?>`.
      - Menginjeksi item baru langsung ke `CartController` via `Get.find<CartController>().addItem(...)`.
+     - Menambahkan badge kuantitas keranjang reaktif (`controller.cartCount`) pada icon keranjang di AppBar `DetailView` (dan `WishlistView`) sehingga konsisten dengan `HomeView`.
   6. `lib/app/modules/cart/views/cart_view.dart`:
      - Menghubungkan seluruh antarmuka keranjang belanja ke data nyata di `CartController` (daftar item, ringkasan harga, stepper qty, dan tombol hapus).
   7. `lib/app/modules/wishlist/controllers/wishlist_controller.dart`:

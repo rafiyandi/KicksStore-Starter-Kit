@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:e_commerce/app/core/theme/app_colors.dart';
 import 'package:e_commerce/app/modules/wishlist/controllers/wishlist_controller.dart';
+import 'package:e_commerce/app/routes/app_pages.dart';
 
 /// Halaman Wishlist Favorit (Sesi 03: Terhubung ke In-Memory Reactive State)
 class WishlistView extends GetView<WishlistController> {
@@ -25,29 +26,46 @@ class WishlistView extends GetView<WishlistController> {
           ),
         ),
         actions: [
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            decoration: BoxDecoration(
-              color: AppColors.primary.withAlpha(30),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.bolt_rounded, color: AppColors.primary, size: 14),
-                SizedBox(width: 4),
-                Text(
-                  'Reaktif',
-                  style: TextStyle(
-                    color: AppColors.primary,
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
+          // Navigasi ke Keranjang Belanja dengan Badge Kuantitas Reaktif (Sesi 03)
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              IconButton(
+                tooltip: 'Buka Keranjang',
+                icon: const Icon(Icons.shopping_bag_outlined),
+                onPressed: () => Get.toNamed(Routes.CART),
+              ),
+              Obx(() {
+                final count = controller.cartCount;
+                if (count == 0) return const SizedBox.shrink();
+                return Positioned(
+                  right: 6,
+                  top: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
+                      color: AppColors.primary,
+                      shape: BoxShape.circle,
+                    ),
+                    constraints: const BoxConstraints(
+                      minWidth: 18,
+                      minHeight: 18,
+                    ),
+                    child: Text(
+                      '$count',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                );
+              }),
+            ],
           ),
+          const SizedBox(width: 8),
         ],
       ),
       body: Obx(() {

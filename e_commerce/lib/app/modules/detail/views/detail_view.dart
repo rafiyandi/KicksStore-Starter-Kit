@@ -34,10 +34,44 @@ class DetailView extends GetView<DetailController> {
               onPressed: controller.toggleFavorite,
             ),
           ),
-          IconButton(
-            tooltip: 'Buka Keranjang',
-            icon: const Icon(Icons.shopping_bag_outlined),
-            onPressed: () => Get.toNamed(Routes.CART),
+          // Sesi 03: Navigasi ke Keranjang Belanja dengan Badge Kuantitas Reaktif (Obx)
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              IconButton(
+                tooltip: 'Buka Keranjang',
+                icon: const Icon(Icons.shopping_bag_outlined),
+                onPressed: () => Get.toNamed(Routes.CART),
+              ),
+              Obx(() {
+                final count = controller.cartCount;
+                if (count == 0) return const SizedBox.shrink();
+                return Positioned(
+                  right: 6,
+                  top: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
+                      color: AppColors.primary,
+                      shape: BoxShape.circle,
+                    ),
+                    constraints: const BoxConstraints(
+                      minWidth: 18,
+                      minHeight: 18,
+                    ),
+                    child: Text(
+                      '$count',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                );
+              }),
+            ],
           ),
           const SizedBox(width: 8),
         ],

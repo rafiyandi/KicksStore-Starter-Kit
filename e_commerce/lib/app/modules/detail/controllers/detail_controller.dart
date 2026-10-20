@@ -73,21 +73,26 @@ class DetailController extends GetxController {
     }
   }
 
+  // Sesi 03: Mengakses CartController via Dependency Injection
+  CartController get cartController {
+    if (Get.isRegistered<CartController>()) {
+      return Get.find<CartController>();
+    }
+    return Get.put(CartController());
+  }
+
+  // Jumlah total item di keranjang untuk badge AppBar reaktif
+  int get cartCount => cartController.totalItemCount;
+
   // Sesi 03: Mengirim produk ke CartController via Dependency Injection (Get.find)
   void addToCart() {
     if (product.value == null) return;
 
-    CartController cart;
-    if (Get.isRegistered<CartController>()) {
-      cart = Get.find<CartController>();
-    } else {
-      cart = Get.put(CartController());
-    }
-
-    cart.addItem(
+    cartController.addItem(
       product.value!,
       quantity: quantity.value,
       size: selectedSize.value,
     );
   }
 }
+

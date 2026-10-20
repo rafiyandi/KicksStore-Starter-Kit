@@ -32,6 +32,9 @@ class WishlistController extends GetxController {
 
   int get totalCount => wishlistItems.length;
 
+  // Jumlah total item di keranjang belanja
+  int get cartCount => cartController.totalItemCount;
+
   // Hapus dari wishlist
   void removeFromWishlist(String productId) {
     homeController.favoriteIds.remove(productId);
