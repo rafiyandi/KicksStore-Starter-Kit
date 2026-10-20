@@ -86,16 +86,12 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
 
 ### Milestone 2: Sesi 01 - Fondasi GetX (3 Pilar), GetX CLI & Onboarding Starter Kit
 - **Master Outline & AI Prompt Presentation Suite**:
-  - `docs/materi_presentasi/OUTLINE_SLIDE_SESI_01_AI_PROMPT.md` (Fondasi 3 Pilar GetX & GetX CLI).
-  - `docs/materi_presentasi/OUTLINE_SLIDE_MVVM_GETX_AI_PROMPT.md` (Arsitektur MVVM & Pemisahan Logika).
-  - `docs/materi_presentasi/OUTLINE_SLIDE_REST_API_DIO_AI_PROMPT.md` (Rest API Networking, Dio, JSON Serialization, Shimmer UI).
-  - `docs/materi_presentasi/OUTLINE_SLIDE_LOCAL_STORAGE_HIVE_AI_PROMPT.md` (Local Storage: SharedPreferences vs Hive CE NoSQL).
-  - `docs/materi_presentasi/OUTLINE_SLIDE_FIREBASE_AUTH_FIRESTORE_AI_PROMPT.md` (Firebase Auth & Cloud Firestore Realtime).
+  - `docs/materi_presentasi/01_OUTLINE_SLIDE_FONDASI_GETX_DAN_CLI.md` (Urutan 1: Sesi 01 - Fondasi 3 Pilar GetX & GetX CLI).
+  - `docs/materi_presentasi/02_OUTLINE_SLIDE_ARSITEKTUR_MVVM_GETX.md` (Urutan 2: Sesi 03 - Arsitektur MVVM & Pemisahan Logika).
+  - `docs/materi_presentasi/03_OUTLINE_SLIDE_REST_API_DAN_DIO.md` (Urutan 3: Sesi 05-06 - Rest API Networking, Dio, & Shimmer UI).
+  - `docs/materi_presentasi/04_OUTLINE_SLIDE_LOCAL_STORAGE_HIVE.md` (Urutan 4: Sesi 07-08 - SharedPreferences vs Hive CE NoSQL).
+  - `docs/materi_presentasi/05_OUTLINE_SLIDE_FIREBASE_AUTH_FIRESTORE.md` (Urutan 5: Sesi 09-10 - Firebase Auth & Cloud Firestore Realtime).
   - *Seluruh dokumen dilengkapi design directives (Clean Light Theme 16:9), layout spesifik per slide, kode Dart, analogi dunia nyata, speaker notes, kuis siswa, dan prompt siap salin untuk Claude, NotebookLM, Gamma.app, atau ChatGPT.*
-- **Slide Deck Presentasi Lengkap (Tema Terang / Clean Light Theme)**:
-  - **PowerPoint**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.pptx` (Format Microsoft PowerPoint 16:9, typography proporsional, card styling, bersih & elegan).
-  - **Web Interactive Slide**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.html` (Bisa dibuka di browser apa pun dalam mode fullscreen presentation).
-  - **Source Markdown**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.md`.
 - **Onboarding Proyek Siswa**:
   - Siswa siap meng-clone dan checkout ke branch `starter-kit`.
 - **Git Checkpoint**: `sesi-01`

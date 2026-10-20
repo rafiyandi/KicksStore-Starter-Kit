@@ -127,7 +127,7 @@ Setiap sesi dirancang dengan standar durasi rata-rata **180 menit** (3 jam pelaj
 
 ### Sesi 01: Fondasi Arsitektur GetX (3 Pilar), GetX CLI & Onboarding Starter Kit
 * **Git Checkpoint:** `git tag -a sesi-01 -m "Sesi 01: GetX 3 pillars presentation, GetX CLI, and starter-kit onboarding"`
-* **Materi Ajar:** Slide Presentasi Lengkap di [`docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.md`](file:///Users/rafiyandi/Downloads/sanbercode/SMK/docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.md)
+* **Materi Ajar:** Dokumen Spesifikasi Slide & Master Prompt AI di [`docs/materi_presentasi/01_OUTLINE_SLIDE_FONDASI_GETX_DAN_CLI.md`](file:///Users/rafiyandi/Downloads/sanbercode/SMK/docs/materi_presentasi/01_OUTLINE_SLIDE_FONDASI_GETX_DAN_CLI.md)
 * **Tujuan Pembelajaran:** Siswa memahami filosofi dan arsitektur GetX Pattern standar industri, menguasai 3 pilar utama (State Management, Route Management, Dependency Management), memahami otomasi GetX CLI, serta siap mengarungi proyek *KicksStore* dari branch `starter-kit`.
 * **Alokasi Waktu (180 Menit):**
   * 30 Menit: Presentasi Slide Bagian 1: Masalah klasik Flutter standar vs 3 Pilar GetX & Analogi Restoran Modern.
