@@ -85,6 +85,8 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
   - **Dedicated Branch Siswa**: `starter-kit` (Siswa dapat meng-checkout branch ini untuk memulai pembelajaran dengan UI siap pakai tanpa boilerplate kosong).
 
 ### Milestone 2: Sesi 01 - Fondasi GetX (3 Pilar), GetX CLI & Onboarding Starter Kit
+- **Master Outline & AI Prompt Presentation**:
+  - Dibuat di `docs/materi_presentasi/OUTLINE_SLIDE_SESI_01_AI_PROMPT.md` (Dokumen spesifikasi slide per slide lengkap dengan design directives, talking points, visual layout guidance, dan prompt siap copy-paste untuk AI seperti Claude, NotebookLM, Gamma.app, atau ChatGPT).
 - **Slide Deck Presentasi Lengkap (Tema Terang / Clean Light Theme)**:
   - **PowerPoint**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.pptx` (Format Microsoft PowerPoint 16:9, typography proporsional, card styling, bersih & elegan).
   - **Web Interactive Slide**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.html` (Bisa dibuka di browser apa pun dalam mode fullscreen presentation).
@@ -104,6 +106,7 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
 - **Onboarding Proyek Siswa**:
   - Siswa siap meng-clone dan checkout ke branch `starter-kit`.
 - **Git Checkpoint**: `sesi-01`
+
 
 
 
