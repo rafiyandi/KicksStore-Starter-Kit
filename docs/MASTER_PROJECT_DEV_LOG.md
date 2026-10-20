@@ -80,7 +80,10 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
   - Selesai 8 file view dan 2 sub-komponen home.
   - Menangani adaptasi warna Dark Mode dan Light Mode di seluruh layar.
   - Uji static analysis: `dart analyze lib` lulus dengan **0 Errors**.
-- **Tag Git Target**: `v0.1-starter-ui`
+- **Distribusi untuk Siswa**:
+  - **Git Tag**: `v0.1-starter-ui`
+  - **Dedicated Branch Siswa**: `starter-kit` (Siswa dapat meng-checkout branch ini untuk memulai pembelajaran dengan UI siap pakai tanpa boilerplate kosong).
+
 
 ---
 
