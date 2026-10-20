@@ -85,8 +85,10 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
   - **Dedicated Branch Siswa**: `starter-kit` (Siswa dapat meng-checkout branch ini untuk memulai pembelajaran dengan UI siap pakai tanpa boilerplate kosong).
 
 ### Milestone 2: Sesi 01 - Fondasi GetX (3 Pilar), GetX CLI & Onboarding Starter Kit
-- **Slide Deck Presentasi Lengkap**:
-  - Dibuat di `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.md` (format Marp/Slide Deck Markdown siap presentasi).
+- **Slide Deck Presentasi Lengkap (Multi-Format)**:
+  - **PowerPoint**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.pptx` (Format resmi Microsoft PowerPoint, siap tayang di proyektor).
+  - **Web Interactive Slide**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.html` (Bisa dibuka di browser apa pun dalam mode fullscreen presentation).
+  - **Source Markdown**: `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.md`.
   - Meliputi:
     1. Evaluasi masalah `setState()` & `BuildContext` di Flutter standar.
     2. Pilar 1: State Management (Reaktif `.obs` vs `Obx`).
@@ -98,6 +100,7 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
 - **Onboarding Proyek Siswa**:
   - Siswa siap meng-clone dan checkout ke branch `starter-kit`.
 - **Git Checkpoint**: `sesi-01`
+
 
 ---
 
