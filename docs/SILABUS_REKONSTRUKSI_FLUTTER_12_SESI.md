@@ -125,24 +125,26 @@ Setiap sesi dirancang dengan standar durasi rata-rata **180 menit** (3 jam pelaj
 
 ---
 
-### Sesi 01: Inisialisasi Proyek, GetX CLI & Layouting Katalog
-* **Git Checkpoint:** `git tag -a sesi-01 -m "Sesi 01: Project init and static catalog layout"`
-* **Tujuan Pembelajaran:** Siswa memahami struktur proyek Flutter standar industri, arsitektur GetX Pattern, dan mampu menyusun tata letak (*layout*) kartu produk e-commerce.
-* **Alokasi Waktu:**
-  * 30 Menit: Pengenalan Flutter, widget tree, dan arsitektur GetX Pattern.
-  * 60 Menit: Inisialisasi proyek via GetX CLI (`get create project e_commerce`), review folder `lib/app/`.
-  * 75 Menit: Praktik layouting: `Scaffold`, `AppBar`, `Container`, `Row`, `Column`, `ListView`, dan `GridView`.
-  * 15 Menit: Troubleshooting & review hasil layout.
+### Sesi 01: Fondasi Arsitektur GetX (3 Pilar), GetX CLI & Onboarding Starter Kit
+* **Git Checkpoint:** `git tag -a sesi-01 -m "Sesi 01: GetX 3 pillars presentation, GetX CLI, and starter-kit onboarding"`
+* **Materi Ajar:** Slide Presentasi Lengkap di [`docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.md`](file:///Users/rafiyandi/Downloads/sanbercode/SMK/docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.md)
+* **Tujuan Pembelajaran:** Siswa memahami filosofi dan arsitektur GetX Pattern standar industri, menguasai 3 pilar utama (State Management, Route Management, Dependency Management), memahami otomasi GetX CLI, serta siap mengarungi proyek *KicksStore* dari branch `starter-kit`.
+* **Alokasi Waktu (180 Menit):**
+  * 30 Menit: Presentasi Slide Bagian 1: Masalah klasik Flutter standar vs 3 Pilar GetX & Analogi Restoran Modern.
+  * 45 Menit: Presentasi Slide Bagian 2: Deep dive Reaktivitas (`.obs` & `Obx`), Navigasi tanpa Context (`Get.toNamed`), dan DI (`Get.lazyPut`, `Bindings`).
+  * 45 Menit: Eksplorasi GetX CLI & Anatomi Arsitektur Modular `lib/app/` (`routes`, `modules`, `bindings`, `controllers`, `views`).
+  * 40 Menit: Onboarding Project *KicksStore*: Git checkout branch `starter-kit`, bedah komponen UI adaptif Light/Dark mode, dan uji running di device/emulator.
+  * 20 Menit: Kuis interaktif pemahaman konsep & Q&A.
 * **Materi Teori:**
-  * Anatomi widget tree dan perbedaan `StatelessWidget` vs `StatefulWidget`.
-  * Anatomi GetX Pattern: modul `home` (`views/`, `controllers/`, `bindings/`).
-  * Layout responsive dengan `AspectRatio`, `Card`, dan `ClipRRect`.
+  * 3 Pilar GetX: State Management (Reactive `.obs`), Route Management (`Get.toNamed`), Dependency Management (`Get.put` / `Get.lazyPut` & Bindings).
+  * Anatomi GetX Pattern: modul `home` (`views/`, `controllers/`, `bindings/`) dan global routes (`app_pages.dart`, `app_routes.dart`).
+  * Peran GetX CLI dalam standarisasi arsitektur industri SMK.
 * **Praktik Master Project:**
-  * Membangun `ProductCard` statis: gambar produk (placeholder), judul barang, kategori badge, harga produk berformat Rupiah, dan tombol keranjang.
-  * Menampilkan 6 kartu produk statis dalam `GridView.builder`.
+  * Penyusunan deck slide presentasi komprehensif instruktur Sesi 01.
+  * Onboarding siswa ke branch `starter-kit` (verifikasi 8 modul UI siap pakai).
 * **Titik Kritis Siswa (Common Pitfalls):**
-  * *RenderFlex overflowed*: Ingatkan penggunaan `Expanded`, `SingleChildScrollView`, atau batasi dimensi dengan `SizedBox`.
-  * Salah letak file: Tekankan aturan meletakkan widget di folder modular `modules/home/views/components/`.
+  * Kebingungan peran `Binding`: Tekankan analogi *Supply Chain* di mana Binding bertanggung jawab menyiapkan Controller ke memori saat halaman dikunjungi.
+  * Masalah environment Flutter/Git: Pastikan seluruh siswa berhasil clone dan run project tanpa error.
 
 ---
 

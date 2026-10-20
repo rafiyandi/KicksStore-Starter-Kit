@@ -84,16 +84,30 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
   - **Git Tag**: `v0.1-starter-ui`
   - **Dedicated Branch Siswa**: `starter-kit` (Siswa dapat meng-checkout branch ini untuk memulai pembelajaran dengan UI siap pakai tanpa boilerplate kosong).
 
+### Milestone 2: Sesi 01 - Fondasi GetX (3 Pilar), GetX CLI & Onboarding Starter Kit
+- **Slide Deck Presentasi Lengkap**:
+  - Dibuat di `docs/materi_presentasi/PPT_SESI_01_FONDASI_GETX_DAN_CLI.md` (format Marp/Slide Deck Markdown siap presentasi).
+  - Meliputi:
+    1. Evaluasi masalah `setState()` & `BuildContext` di Flutter standar.
+    2. Pilar 1: State Management (Reaktif `.obs` vs `Obx`).
+    3. Pilar 2: Route Management (`Get.toNamed`, `Get.back`, passing arguments tanpa `BuildContext`).
+    4. Pilar 3: Dependency Management (`Get.lazyPut`, `Get.find`, Bindings, memory auto-dispose).
+    5. GetX CLI: Command cheat sheet & standarisasi arsitektur modular `lib/app/`.
+    6. Analogi Dunia Nyata: Alur Restoran Modern (View = Meja/Menu, Controller = Koki/Dapur, Binding = Supplier).
+    7. Kuis interaktif 3 pertanyaan pemahaman konsep.
+- **Onboarding Proyek Siswa**:
+  - Siswa siap meng-clone dan checkout ke branch `starter-kit`.
+- **Git Checkpoint**: `sesi-01`
 
 ---
 
 ## 5. RENCANA EKSEKUSI SESI 01 s/d SESI 12
 
-Setelah Starter UI lengkap, langkah berikutnya adalah memulai eksekusi modular sesuai silabus:
+Status dan rencana eksekusi modular:
 
-| Sesi | Topik Utama | Rencana Aksi Master Project | Checkpoint Tag |
+| Sesi | Topik Utama | Rencana Aksi Master Project | Status / Checkpoint Tag |
 |---|---|---|---|
-| **Sesi 01** | Pengenalan Flutter & Dasar Dart | Setup Flutter SDK, eksplorasi struktur project GetX CLI, widget tree `home_view`, styling text & container | `sesi-01` |
+| **Sesi 01** | Fondasi GetX (3 Pilar) & GetX CLI | Penyusunan slide PPT komprehensif, analogi arsitektur, kuis interaktif, onboarding `starter-kit` |  **Selesai** (`sesi-01`) |
 | **Sesi 02** | Layouting & State Management Dasar | Bedah `Row`, `Column`, `GridView` pada katalog produk, implementasi reaktivitas GetX pertama (`RxInt` cart badge, `RxBool` favorite) | `sesi-02` |
 | **Sesi 03** | Advanced State Management GetX | Refactor logika ke `HomeController` & `DetailController`, pemisahan logic dari view, navigation `Get.toNamed` berargumen | `sesi-03` |
 | **Sesi 04** | Form Handling & Validasi Input | Form validasi `login_view` & `register_view`, validasi email regex & password, `TextEditingController` via GetX | `sesi-04` |
@@ -108,3 +122,4 @@ Setelah Starter UI lengkap, langkah berikutnya adalah memulai eksekusi modular s
 
 ---
 *Log ini akan selalu diperbarui secara berkala pada setiap penyelesaian tahapan dan sesi.*
+
