@@ -189,6 +189,30 @@ Dua tema telah dikonfigurasi penuh dan terintegrasi di `lib/main.dart` melalui `
 - **Status Eksekusi**: ✅ **Selesai (Verified 0 Errors with dart analyze & 8 Unit Tests Passed)**
 - **Git Checkpoint**: `sesi-04`
 
+### Milestone 6: Sesi 05 - Networking: REST API Client & JSON Deserialization dengan Dio
+- **Tujuan Pembelajaran Siswa**:
+  1. Memahami arsitektur komunikasi data client-server via protokol HTTP (GET request, headers, timeouts, status codes).
+  2. Menerapkan library `dio` sebagai HTTP client modern Flutter dengan konfigurasi `BaseOptions` dan logging interceptor.
+  3. Membangun pola Data Layer terstruktur: memisahkan lapisan jaringan (`DioService`), abstraksi data (`ProductRepository`), dan entity model type-safe (`ProductModel`).
+  4. Melakukan deserialisasi defensif JSON (`ProductModel.fromJson`) untuk menangani variasi data real dari endpoint public DummyJSON (`https://dummyjson.com/products/category/mens-shoes`).
+  5. Menangani state jaringan reaktif di ViewModel (`isLoading`, `errorMessage`, `products`) dan fitur *Pull-to-Refresh* serta tombol *Retry (Coba Lagi)*.
+- **Daftar Berkas & Rencana Aksi Logika**:
+  1. `lib/app/data/remote/dio_service.dart` (BARU):
+     - Kelas singleton Dio client dengan Base URL DummyJSON, timeout 10 detik, dan interceptor logging.
+  2. `lib/app/data/repository/product_repository.dart` (BARU):
+     - Repository untuk fetch data produk online dengan penanganan error `DioException`.
+  3. `lib/app/data/models/product_model.dart`:
+     - Tambahkan factory `ProductModel.fromJson(Map<String, dynamic> json)` defensif yang memetakan format server ke entity aplikasi.
+  4. `lib/app/modules/home/controllers/home_controller.dart`:
+     - Integrasikan `ProductRepository`.
+     - Tambahkan state reaktif: `isLoading = false.obs` dan `errorMessage = ''.obs`.
+     - Method `fetchProducts()` untuk memuat data online dengan fallback aman ke katalog lokal jika offline.
+  5. `lib/app/modules/home/views/home_view.dart`:
+     - Tambahkan widget `RefreshIndicator` untuk mendukung gesture Pull-to-Refresh.
+     - Tampilkan visual loading indicator saat pertama kali fetch dan tampilan Error dengan tombol Coba Lagi jika koneksi gagal.
+- **Status Eksekusi**: ✅ **Selesai (Verified 0 Errors with dart analyze & 12 Unit Tests Passed)**
+- **Git Checkpoint**: `sesi-05`
+
 ---
 
 ## 5. RENCANA EKSEKUSI SESI 01 s/d SESI 12
@@ -202,7 +226,7 @@ Status dan rencana eksekusi modular:
 | **Sesi 03** | Arsitektur MVVM & Dependency Injection | Lapisan Model Type-Safe (`ProductModel`, `CartItemModel`), refactor ViewModel, CartController terpusat, komunikasi via `Get.find` |  **Selesai** (`sesi-03`) |
 | **Sesi 04** | Form Handling & Validasi Input | Form validasi `login_view` & `register_view`, validasi email regex & password, `TextEditingController` via GetX |  **Selesai** (`sesi-04`) |
 
-| **Sesi 05** | Networking: Rest API & JSON Serializer | Setup `DioService`, `ProductModel` (fromJson/toJson), fetching katalog produk dummy API, error handling snackbar | `sesi-05` |
+| **Sesi 05** | Networking: Rest API & JSON Serializer | Setup `DioService`, `ProductModel` (fromJson/toJson), fetching katalog produk dummy API, error handling snackbar |  **Selesai** (`sesi-05`) |
 | **Sesi 06** | Dio Interceptor & State UI | Dio interceptor (logging & auth token), Shimmer loading skeleton pada `home_view`, state empty & error retry | `sesi-06` |
 | **Sesi 07** | Local Storage: Shared Preferences | Simpan status session auth (token/isLoggedIn) dan preferensi tema (Light/Dark switch) via SharedPreferences | `sesi-07` |
 | **Sesi 08** | NoSQL Offline Database: Hive CE | Setup Hive CE box, `CartItemModel` TypeAdapter, operasi CRUD offline keranjang belanja dan wishlist | `sesi-08` |
